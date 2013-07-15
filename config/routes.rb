@@ -1,4 +1,8 @@
 Marketplace::Application.routes.draw do
+  root :to => 'bids#index'
+  resources :bids
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
