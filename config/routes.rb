@@ -1,6 +1,4 @@
 Marketplace::Application.routes.draw do
-  devise_for :users
-
   root :to => 'bids#index'
   resources :bids
 
