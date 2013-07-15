@@ -36,11 +36,16 @@
           <li class="divider"></li>
           <li><%= link_to "Active Bids", bids_path %></li>
           <li class="divider"></li>
+          <% if user_signed_in? %>
           <li><%= link_to "Profile", bids_path %></li>
           <li class="divider"></li>
           <li><%= link_to "Logout", bids_path %></li>
           <li class="divider"></li>
-          <li><%= link_to "Contact Us" %></li>
+          <% else %>
+          <li><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %></li>
+          <li class="divider"></li>
+          <% end %>
+          <li><%= link_to "FAQ" %></li>
         </ul>
       </div>
     </nav>
