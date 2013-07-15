@@ -11,15 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_field :comment %>
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :comment, class: "right inline", title: "Additional information", data: {tooltip: true } %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :comment %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :active, class: "right inline" %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.check_box :active %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="small-9 small-offset-3 columns">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>
