@@ -4,7 +4,8 @@ Marketplace::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
   match "/faq" => "sessions#faq", :as => :faq
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  # :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  get "user" => 'users#edit', :as => :edit_user
+  put "user" => 'users#update', :as => :update_user
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

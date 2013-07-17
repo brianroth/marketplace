@@ -1,0 +1,26 @@
+<%= form_for(@user, :url => :update_user ) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :gamecenter_id, 'Gamecenter ID', class: "right inline", title: "GameCenter ID", data: {tooltip: true } %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :gamecenter_id%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-9 small-offset-3 columns">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130715035154) do
     t.string   "email",              :null => false
     t.string   "encrypted_password", :null => false
     t.string   "name",               :null => false
+    t.string   "gamecenter_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end

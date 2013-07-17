@@ -1270,6 +1270,7 @@ $default-float: left;
 
 // $topbar-sticky-class: ".sticky";
 
+$row-width: emCalc(1200px);
 $topbar-bg: #212D48 !default;
-
+$topbar-margin-bottom: emCalc(10px);
 @import 'foundation';
