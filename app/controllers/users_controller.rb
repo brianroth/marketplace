@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user = User.find_by_id(session[:user_id])
       true
     else
-      redirect_to bids_path, :notice => "You must log in first" 
+      redirect_to offers_path, :notice => "You must log in first" 
     end
   end
 end

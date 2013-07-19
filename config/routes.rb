@@ -1,6 +1,6 @@
 Marketplace::Application.routes.draw do
-  root :to => 'bids#index'
-  resources :bids
+  root :to => 'offers#index'
+  resources :offers
   match "/signout" => "sessions#destroy", :as => :signout
   match "/faq" => "sessions#faq", :as => :faq
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}

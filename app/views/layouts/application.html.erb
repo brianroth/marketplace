@@ -24,15 +24,15 @@
     <nav class="top-bar">
       <ul class="title-area">
         <li class="name">
-          <h1><%= link_to "Pocket Planes Marketplace", bids_path %></a></h1>
+          <h1><%= link_to "Pocket Planes Marketplace", offers_path %></a></h1>
         </li>
       </ul>
       <section class="top-bar-section">
         <ul class="right">
           <li class="divider"></li>
-          <li><%= link_to "Parts", bids_path %></li>
+          <li><%= link_to "Parts", offers_path %></li>
           <li class="divider"></li>
-          <li><%= link_to "Active Bids", bids_path %></li>
+          <li><%= link_to "Active Offerss", offers_path %></li>
           <li class="divider"></li>
           <% if user_signed_in? %>
           <li><%= link_to "Profile", edit_user_path %></li>

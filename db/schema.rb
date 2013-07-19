@@ -13,8 +13,11 @@
 
 ActiveRecord::Schema.define(:version => 20130717214506) do
 
-  create_table "bids", :force => true do |t|
+  create_table "offers", :force => true do |t|
     t.string   "comment"
+    t.integer  "part_id"
+    t.integer  "plane_id"
+    t.integer  "user_id"
     t.boolean  "active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
