@@ -1,4 +1,6 @@
 <%= form_for(@offer) do |f| %>
+<fieldset>
+  <legend><%=offer_type(@offer) %> Offer</legend>
   <% if @offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
@@ -12,33 +14,46 @@
   <% end %>
 
   <div class="row">
-    <div class="small-3 columns">
-      <%= f.label :plane, class: "right inline", title: "Plane", data: {tooltip: true } %>
-    </div>
-    <div class="small-9 columns">
-      <%= f.select :plane_id, Plane.all.collect {|p| [ p.name, p.id ] }, { include_blank: true } %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <%= f.label :part, class: "right inline", title: "Part", data: {tooltip: true } %>
-    </div>
-    <div class="small-9 columns">
-      <%= f.select :part_id, Part.all.collect {|p| [ p.name, p.id ] }, { include_blank: true } %>
+    <div class="small-8">
+      <div class="row">
+        <div class="small-3 columns">
+          <%= f.label :plane, class: "right inline", title: "Plane", data: {tooltip: true } %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.select :plane_id, Plane.all.collect {|p| [ p.name, p.id ] }, { include_blank: true } %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="small-3 columns">
-      <%= f.label :comment, class: "right inline", title: "Additional information", data: {tooltip: true } %>
-    </div>
-    <div class="small-9 columns">
-      <%= f.text_field :comment %>
+    <div class="small-8">
+      <div class="row">
+        <div class="small-3 columns">
+          <%= f.label :part, class: "right inline", title: "Part", data: {tooltip: true } %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.select :part_id, Part.all.collect {|p| [ p.name, p.id ] }, :include_blank => true, :disabled => true, :class => "medium" %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="small-9 small-offset-3 columns">
+    <div class="small-8">
+      <div class="row">
+        <div class="small-3 columns">
+          <%= f.label :comment, class: "right inline", title: "Additional information", data: {tooltip: true } %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :comment %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
       <%= link_to 'Back', offers_path, :class => "button radius"%>
       <%= f.submit "Save", :class => "button radius" %>
     </div>
   </div>
+</fieldset>
 <% end %>

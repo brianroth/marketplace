@@ -1,15 +1,18 @@
 <h1>Offers</h1>
 
 <table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th>Plane</th>
-    <th>Part</th>
-    <th>Apple ID</th>
-    <th>Comment</th>
-  </tr>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th width="100">Plane</th>
+      <th width="100">Part</th>
+      <th width="100">Apple ID</th>
+      <th width="400">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
 <% if user_signed_in? %>
 <% @offers.each do |offer| %>
   <tr>
@@ -23,12 +26,13 @@
   </tr>
 <% end %>
 <%else%>
-<tr>
-  <td colspan=7>
-    You must be logged in to view offers
-  </td>
-</tr>
+  <tr>
+    <td colspan=7>
+      You must be logged in to view offers
+    </td>
+  </tr>
 <%end%>
+  <tbody>
 </table>
 <% if user_signed_in? %>
 <%= link_to 'Create Offer', new_offer_path, class: "button radius" %>
