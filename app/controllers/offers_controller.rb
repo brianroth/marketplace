@@ -1,83 +1,53 @@
 class OffersController < ApplicationController
-  # GET /offers
-  # GET /offers.json
+  before_filter :find_offer, :only => [:show, :edit, :update, :destroy]
+
   def index
-    @offers = Offer.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @offers }
-    end
+    @offers = Offer.active.includes(:plane, :part, :user)
   end
 
-  # GET /offers/1
-  # GET /offers/1.json
-  def show
-    @offer = Offer.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @offer }
-    end
-  end
-
-  # GET /offers/new
-  # GET /offers/new.json
   def new
     @offer = Offer.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @offer }
-    end
   end
 
-  # GET /offers/1/edit
   def edit
-    @offer = Offer.find(params[:id])
+    redirect_to offers_path, :notice => "You cannot edit that offer" unless session[:user_id] == @offer.user_id
   end
 
-  # POST /offers
-  # POST /offers.json
   def create
-    @offer = Offer.new(params[:offer])
+    @offer = Offer.new(params[:offer].merge(:active => true, :user_id => session[:user_id]))
 
-    respond_to do |format|
-      if @offer.save
-        format.html { redirect_to @offer, :notice => 'Offer was successfully created.' }
-        format.json { render :json => @offer, :status => :created, :location => @offer }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @offer.errors, :status => :unprocessable_entity }
-      end
+    if @offer.save
+      redirect_to @offer, :notice => 'Offer was successfully created.'
+    else
+      render :action => "new"
     end
   end
 
-  # PUT /offers/1
-  # PUT /offers/1.json
   def update
-    @offer = Offer.find(params[:id])
-
-    respond_to do |format|
-      if @offer.update_attributes(params[:offer])
-        format.html { redirect_to @offer, :notice => 'Offer was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @offer.errors, :status => :unprocessable_entity }
-      end
+    if @offer.update_attributes(params[:offer])
+      redirect_to @offer, :notice => 'Offer was successfully updated.'
+    else
+      render :action => "edit"
     end
   end
 
-  # DELETE /offers/1
-  # DELETE /offers/1.json
   def destroy
-    @offer = Offer.find(params[:id])
-    @offer.destroy
+    if session[:user_id] == @offer.user_id
+      @offer.destroy 
+      notice = "Offer successfully destroyed"
+    else
+      notice = "You cannot delete an offer that doesn't belong to you"
+    end
+    redirect_to offers_url, :notice => notice
+  end
 
-    respond_to do |format|
-      format.html { redirect_to offers_url }
-      format.json { head :no_content }
+  private
+  def find_offer
+    if @offer = Offer.active.find_by_id(params[:id])
+      true
+    else
+      redirect_to offers_path, :notice => "Offer not found"
+      false
     end
   end
 end

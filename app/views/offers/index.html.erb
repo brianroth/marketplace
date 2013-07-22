@@ -1,26 +1,35 @@
-<h1>Listing offers</h1>
+<h1>Offers</h1>
 
 <table>
   <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>Plane</th>
+    <th>Part</th>
+    <th>Apple ID</th>
     <th>Comment</th>
-    <th>Active</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
-
+<% if user_signed_in? %>
 <% @offers.each do |offer| %>
   <tr>
-    <td><%= offer.comment %></td>
-    <td><%= offer.active %></td>
     <td><%= link_to 'Show', offer %></td>
     <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
     <td><%= link_to 'Destroy', offer, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td><%= offer.plane.name %></td>
+    <td><%= offer.part.name if offer.part %></td>
+    <td><%= offer.user.gamecenter_id %></td>
+    <td><%= offer.comment %></td>
   </tr>
 <% end %>
+<%else%>
+<tr>
+  <td colspan=7>
+    You must be logged in to view offers
+  </td>
+</tr>
+<%end%>
 </table>
-
-<br />
-
-
-<%= link_to 'New Offer', new_offer_path, class: "button radius" %>
+<% if user_signed_in? %>
+<%= link_to 'Create Offer', new_offer_path, class: "button radius" %>
+<%end%>

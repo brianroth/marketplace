@@ -1,15 +1,17 @@
-<p id="notice"><%= notice %></p>
-
+<p>
+  <b>Plane:</b>
+  <%= @offer.plane.name %>
+</p>
+<%if @offer.part %>
+<p>
+  <b>Part:</b>
+  <%= @offer.part.name %>
+</p>
+<%end %>
 <p>
   <b>Comment:</b>
   <%= @offer.comment %>
 </p>
-
-<p>
-  <b>Active:</b>
-  <%= @offer.active %>
-</p>
-
 
 <%= link_to 'Edit', edit_offer_path(@offer), class: "button radius"%>
 <%= link_to 'Back', offers_path, class: "button radius"%>

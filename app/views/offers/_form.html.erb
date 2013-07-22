@@ -13,6 +13,22 @@
 
   <div class="row">
     <div class="small-3 columns">
+      <%= f.label :plane, class: "right inline", title: "Plane", data: {tooltip: true } %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.select :plane_id, Plane.all.collect {|p| [ p.name, p.id ] }, { include_blank: true } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :part, class: "right inline", title: "Part", data: {tooltip: true } %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.select :part_id, Part.all.collect {|p| [ p.name, p.id ] }, { include_blank: true } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
       <%= f.label :comment, class: "right inline", title: "Additional information", data: {tooltip: true } %>
     </div>
     <div class="small-9 columns">
@@ -20,16 +36,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="small-3 columns">
-      <%= f.label :active, class: "right inline" %>
-    </div>
-    <div class="small-9 columns">
-      <%= f.check_box :active %>
-    </div>
-  </div>
-  <div class="row">
     <div class="small-9 small-offset-3 columns">
-      <%= f.submit %>
+      <%= link_to 'Back', offers_path, :class => "button radius"%>
+      <%= f.submit "Save", :class => "button radius" %>
     </div>
   </div>
 <% end %>
