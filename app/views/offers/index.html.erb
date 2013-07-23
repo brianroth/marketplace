@@ -3,9 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th width="200"></th>
       <th width="100">Plane</th>
       <th width="100">Part</th>
       <th width="100">Apple ID</th>
@@ -16,9 +14,13 @@
 <% if user_signed_in? %>
 <% @offers.each do |offer| %>
   <tr>
-    <td><%= link_to 'Show', offer %></td>
-    <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-    <td><%= link_to 'Destroy', offer, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td>
+      <%if editable?(offer) %>
+        <%= link_to 'Edit', edit_offer_path(offer) %>
+        <%= link_to 'Destroy', offer, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+      <%else%>
+        <%= link_to 'Show', offer %>
+      <%end%>
     <td><%= offer.plane.name %></td>
     <td><%= offer.part.name if offer.part %></td>
     <td><%= offer.user.gamecenter_id %></td>

@@ -6,4 +6,8 @@ module OffersHelper
       "Edit"
     end
   end
+  
+  def editable?(offer)
+    session[:user_id] == offer.user_id
+  end
 end

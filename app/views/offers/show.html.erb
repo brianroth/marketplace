@@ -9,9 +9,19 @@
 </p>
 <%end %>
 <p>
+  <b>Created by:</b>
+  <%= @offer.user.gamecenter_id %>
+</p>
+<p>
+  <b>Created on:</b>
+  <%= @offer.created_at %>
+</p>
+<p>
   <b>Comment:</b>
   <%= @offer.comment %>
 </p>
 
+<% if editable?(@offer) %>
 <%= link_to 'Edit', edit_offer_path(@offer), class: "button radius"%>
+<% end %>
 <%= link_to 'Back', offers_path, class: "button radius"%>
