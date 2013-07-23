@@ -1,4 +1,4 @@
-<%= simple_form_for(@offer) do |f| %>
+<%= simple_form_for(@offer, html: { class: "custom" }) do |f| %>
 <fieldset>
   <legend><%=offer_type(@offer) %> Offer</legend>
   <div class="row">
@@ -8,12 +8,12 @@
   </div>
   <div class="row">
     <div class="large-12 columns">
-      <%= f.association :plane %>
+      <%= f.association :plane, input_html: { class: 'medium' }%>
     </div>
   </div>
   <div class="row">
     <div class="large-12 columns">
-      <%= f.association :part %>
+      <%= f.association :part , input_html: { class: 'medium' }%>
     </div>
   </div>
   <div class="row">
