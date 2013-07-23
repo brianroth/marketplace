@@ -2,7 +2,7 @@ class OffersController < ApplicationController
   before_filter :find_offer, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @offers = Offer.active.includes(:plane, :part, :user)
+    @offers = Offer.active.includes(:plane, :part, :user).paginate(:page => params[:page])
   end
 
   def new

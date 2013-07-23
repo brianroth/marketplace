@@ -8,5 +8,7 @@ class Offer < ActiveRecord::Base
   validates :plane, :presence => {:message => 'You must select a plane'}
   validates :comment, :presence => {:message => 'You must enter a comment'}
 
+  self.per_page = 10
+  
   scope :active, -> { where(:active => true) }
 end
