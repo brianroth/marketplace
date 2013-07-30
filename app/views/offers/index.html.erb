@@ -1,5 +1,2 @@
 <%= render @offers %>
-<% if user_signed_in? %>
-<%= link_to 'Create Offer', new_offer_path, class: "button radius" %>
 <%= will_paginate @offers %>
-<%end%>

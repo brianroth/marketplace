@@ -1,9 +1,14 @@
 <div class="large-4 small-6 columns">
-  <img src="http://placehold.it/100x100&text=Thumbnail">
-
   <div class="panel">
+    <img src="http://placehold.it/240x66&text=Plane Picture">
     <h5><%= offer.plane.name %> <%= offer.part.name if offer.part %></h5>
-    <h6 class="subheader"><%= offer.user.gamecenter_id %></h6>
+    <h6 class="subheader">Offered by <%= offer.user.gamecenter_id %></h6>
     <p><%= offer.comment %></p>
+    <%if editable?(offer) %>
+      <%= link_to 'Edit', edit_offer_path(offer) %>
+      <%= link_to 'Delete', offer, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <%else%>
+      <%= link_to 'Show', offer %>
+    <%end%>
   </div>
 </div>

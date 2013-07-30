@@ -35,10 +35,10 @@
               </ul>
               <section class="top-bar-section">
                 <ul class="right">
-                  <li class="divider"></li>
-                  <li><%= link_to "Offers", offers_path %></li>
-                  <li class="divider"></li>
                   <% if user_signed_in? %>
+                  <li class="divider"></li>
+                  <li><%= link_to "Create Offer", new_offer_path %></li>
+                  <li class="divider"></li>
                   <li><%= link_to "Profile", edit_user_path %></li>
                   <li class="divider"></li>
                   <li><%= link_to "Logout", signout_path %></li>
